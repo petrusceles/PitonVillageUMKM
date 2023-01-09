@@ -1,21 +1,22 @@
 import React from "react";
 import bananaImage from "../public/icons/banana.png";
 import Image from "next/image";
-function ListTitle(props) {
+function ListTitle({ isShowedStateManager, name, pictureUrl }) {
   const onClickMenu = () => {
-    props.isShowedStateManager.setIsShowed((prevIsShowed) => {
+    console.log(name, pictureUrl);
+    isShowedStateManager.setIsShowed((prevIsShowed) => {
       return !prevIsShowed;
     });
   };
   return (
     <div
       className={`w-full bg-slate-100 py-4 hover:cursor-pointer items-center flex px-4 justify-between ${
-        props.isShowedStateManager.isShowed ? "rounded-t-lg" : "rounded-lg"
-      } duration-300 ease-in-out`}
+        isShowedStateManager.isShowed ? "rounded-t-lg" : "rounded-lg"
+      } duration-300 ease-in-out overflow-hidden`}
       onClick={onClickMenu}
     >
       <div className="flex gap-2 items-center">
-        <p className="font-semibold tracking-tight">Sale Pisang</p>
+        <p className="font-semibold tracking-tight">{name}</p>
         <div className="relative">
           <svg
             fill="none"
@@ -24,8 +25,8 @@ function ListTitle(props) {
             width="24"
             xmlns="http://www.w3.org/2000/svg"
             className={`absolute ${
-              props.isShowedStateManager.isShowed ? "opacity-0" : "opacity-100"
-            } duration-100 ease-in-out`}
+              isShowedStateManager.isShowed ? "opacity-0" : "opacity-100"
+            } duration-300 ease-in-out`}
           >
             <path
               xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +41,8 @@ function ListTitle(props) {
             width="24"
             xmlns="http://www.w3.org/2000/svg"
             className={`${
-              props.isShowedStateManager.isShowed ? "opacity-100" : "opacity-0"
-            } duration-100 ease-in-out`}
+              isShowedStateManager.isShowed ? "opacity-100" : "opacity-0"
+            } duration-300 ease-in-out`}
           >
             <path
               xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +52,8 @@ function ListTitle(props) {
           </svg>
         </div>
       </div>
-      <div className="w-[10%]">
-        <Image src={bananaImage} alt={"Sale pisang"} loading={"eager"} />
+      <div className="w-[10%] scale-[400%]">
+        <Image src={pictureUrl} alt={name} width="400"  height="400" loading={"eager"} />
       </div>
     </div>
   );

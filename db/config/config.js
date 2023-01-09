@@ -1,20 +1,20 @@
 module.exports = {
   development: {
-    username: "root",
-    password: null,
-    database: "database_development",
+    username: "postgres",
+    password: "987poi123",
+    database: "umkm_development",
     host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "postgres",
   },
   test: {
-    username: "root",
+    username: "postgres",
     password: null,
     database: "database_test",
     host: "127.0.0.1",
     dialect: "mysql",
   },
   production: {
-    username: "root",
+    username: "postgres",
     password: null,
     database: "database_production",
     host: "127.0.0.1",

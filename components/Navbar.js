@@ -1,7 +1,7 @@
 function Navbar() {
   return (
-    <div className="navbar flex justify-center px-5 py-5">
-      <p className="font-bold text-2xl text-slate-700">PITON</p>
+    <div className="navbar flex px-5 py-5 justify-center">
+      <p className="font-bold italic text-2xl text-slate-700">UMKM</p>
     </div>
   );
 }
