@@ -3,7 +3,7 @@ import List from "../components/List";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import { addCategories } from "../slices/categoriesSlice";
-import { Provider, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 export default function umkm() {
   const dispatch = useDispatch();
@@ -15,7 +15,6 @@ export default function umkm() {
           "http://localhost:2000/api/companies"
         );
         const currentCategoriesResponse = currentCategoriesRequest.data;
-        console.log(currentCategoriesResponse);
         if (currentCategoriesResponse.status) {
           dispatch(
             addCategories({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addSelectedCompanies,
@@ -9,8 +9,13 @@ function ListMenu({ name, companyId }) {
   const selectedCompaniesList = useSelector(selectSelectedCompanies);
   const dispatch = useDispatch();
 
+  const checkCheckbox = useRef();
+
   useEffect(() => {
-    console.log(selectedCompaniesList);
+    const selectedCompanies = selectedCompaniesList.selectedCompanies;
+    if (selectedCompanies.includes(companyId)) {
+      checkCheckbox.current.checked = true;
+    }
   }, [selectedCompaniesList]);
 
   const onChangeCheckbox = (e) => {
@@ -39,6 +44,7 @@ function ListMenu({ name, companyId }) {
         type={"checkbox"}
         className="checkbox checkbox-sm"
         onChange={(e) => onChangeCheckbox(e)}
+        ref={checkCheckbox}
       />
     </div>
   );

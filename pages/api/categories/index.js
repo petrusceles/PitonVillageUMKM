@@ -1,17 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import nextConnect from "next-connect";
-const models = require("../../../db/models/index");
+const { Category, Company } = require("../../../db/models");
 const handler = nextConnect().get(async (req, res) => {
-  console.log(models);
-  const categories = await models.Category.findAll({
+  console.log("Masuk");
+  // console.log(models);
+  const categories = await Category.findAll({
     include: [
       {
-        model: models.Company,
+        model: Company,
         as: "companies",
       },
     ],
   });
-  res.statusCode(200).json({
+  res.statusCode = 200;
+  res.json({
     status: true,
     message: "success retrieved all datas",
     data: {
