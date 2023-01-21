@@ -73,14 +73,16 @@ function Map() {
       })
     );
     companyRef.current.classList.remove("top-[100%]");
-    companyRef.current.classList.add("top-[12.5%]");
+    companyRef.current.classList.add("top-1/2");
+    companyRef.current.classList.add("-translate-y-1/2");
     changePos(e.coordinate.split(", "));
   };
 
   const onClickCloseCompanyHandler = (e) => {
     e.preventDefault();
     companyRef.current.classList.add("top-[100%]");
-    companyRef.current.classList.remove("top-[12.5%]");
+    companyRef.current.classList.remove("top-1/2");
+    companyRef.current.classList.remove("-translate-y-1/2");
   };
   return (
     <div className="relative no-scrollbar overflow-auto">
@@ -118,7 +120,7 @@ function Map() {
       </MapContainer>
       <div
         ref={companyRef}
-        className="absolute z-[999] flex flex-wrap justify-self-center top-[100%] left-[12.5%] w-3/4 h-3/4 bg-opacity-90 bg-slate-200 overflow-auto rounded-lg no-scrollbar duration-300 justify-end ease-in-out transition-all  px-6 py-7 shadow-lg md:left-[25%] md:w-1/2 lg:left-[32.5%] lg:w-[37%] xl:left-[35%] xl:w-[30%]"
+        className="absolute z-[999] flex flex-wrap justify-self-center top-[100%] left-1/2 transform -translate-x-1/2 w-3/4 h-3/4 bg-opacity-100 bg-slate-200 overflow-auto rounded-lg no-scrollbar duration-300 justify-end ease-in-out transition-all  px-6 py-7 shadow-lg md:w-1/2 lg:w-[37%] xl:w-[30%]"
       >
         <button
           className="btn btn-sm mb-6"

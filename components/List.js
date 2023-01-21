@@ -35,10 +35,14 @@ function List() {
     // console.log(ListMapping);
   }, [categoriesList]);
   return (
-    <div className="px-5 flex-wrap flex justify-end text-lg py-4 gap-4">
-      {ListMapping(categoriesListArray)}
+    <div className="px-5 py-3 h-screen overflow-hidden">
+      <div className="flex-wrap flex justify-end mb-3 py-3 text-lg gap-4 max-h-[65%] overflow-auto no-scrollbar">
+        {ListMapping(categoriesListArray)}
+      </div>
       <button className="btn justify-items-end">
-        <Link href="/map" className="capitalize font-normal">Tampilkan</Link>
+        <Link href="/map" className="capitalize font-normal">
+          Tampilkan
+        </Link>
       </button>
       {/* <p>Halo</p> */}
     </div>

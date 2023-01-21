@@ -20,7 +20,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const currentCategoriesRequest = await axios.get(
-          "http://localhost:2000/api/companies"
+          "http://localhost:3000/api/categories"
         );
         const currentCategoriesResponse = currentCategoriesRequest.data;
         if (currentCategoriesResponse.status) {
@@ -38,7 +38,7 @@ export default function Home() {
     fetchData();
   }, []);
   return (
-    <div className="bg-[url('/images/front.jpg')] h-screen w-screen bg-cover ">
+    <div className="bg-[url('/images/front.jpg')] h-screen w-screen bg-cover overflow-hidden">
       <div className="container mx-auto max-w-2xl">
         <Navbar />
         <Search />
