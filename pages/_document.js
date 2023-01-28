@@ -14,7 +14,7 @@ export default function Document() {
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
         crossOrigin=""
       />
-      <body>
+      <body className="h-full">
         <Main />
         <NextScript />
       </body>

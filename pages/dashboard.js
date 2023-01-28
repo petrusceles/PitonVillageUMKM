@@ -1,11 +1,7 @@
 import Dashboard from "../components/Dashboard";
 
 function dashboard() {
-  return (
-    <div className="">
-      <Dashboard />
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default dashboard;

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import UmkmPanelAdd from "./UmkmPanelAdd";
-import UmkmPanelEdit from "./UmkmPanelEdit";
-import UmkmPanelMain from "./UmkmPanelMain";
+import CategoriesPanelAdd from "./CategoriesPanelAdd";
+import CategoriesPanelEdit from "./CategoriesPanelEdit";
+import CategoriesPanelMain from "./CategoriesPanelMain";
 const pageList = ["List", "Tambah", "Edit"];
-function UmkmPanel({ companiesState }) {
+function CategoriesPanel({ categoriesState }) {
   const [page, setPage] = useState("List");
-  const [editUmkm, setEditUmkm] = useState();
+  const [editCategories, setEditCategories] = useState();
   // const []
   useEffect(() => {}, [page]);
   return (
-    <div className="px-8 py-8 bg-slate-50 text-slate-800 flex flex-wrap h-screen overflow-auto no-scrollbar">
+    <div className="px-8 py-8 bg-slate-50 text-slate-800 flex flex-wrap overflow-auto no-scrollbar h-screen ">
       {/* <div className="text-sm breadcrumbs w-full">
         <ul>
           {breadcrumbsList.filter((e, i) => e === page).map((e,i) => (<li><a>{e}</a></li>))}
@@ -17,20 +17,20 @@ function UmkmPanel({ companiesState }) {
       </div> */}
       {(() => {
         if (page === "Tambah") {
-          return <UmkmPanelAdd pageState={{ page, setPage }} />;
+          return <CategoriesPanelAdd pageState={{ page, setPage }} />;
         } else if (page === "Edit") {
           return (
-            <UmkmPanelEdit
+            <CategoriesPanelEdit
               pageState={{ page, setPage }}
-              editUmkmState={{ editUmkm, setEditUmkm }}
+              editCategoriesState={{ editCategories, setEditCategories }}
             />
           );
         } else {
           return (
-            <UmkmPanelMain
-              companiesState={companiesState}
+            <CategoriesPanelMain
+              categoriesState={categoriesState}
               pageState={{ page, setPage }}
-              editUmkmState={{ editUmkm, setEditUmkm }}
+              editCategoriesState={{ editCategories, setEditCategories }}
             />
           );
         }
@@ -41,4 +41,4 @@ function UmkmPanel({ companiesState }) {
   );
 }
 
-export default UmkmPanel;
+export default CategoriesPanel;

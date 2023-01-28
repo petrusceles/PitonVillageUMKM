@@ -11,14 +11,17 @@
 // twitter_link: DataTypes.STRING,
 // content: DataTypes.TEXT,
 import { ToastContainer } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
-import UmkmPanel from "./UmkmPanel";
 import SidePanel from "./SidePanel";
-import UmkmPanelDeleteModal from "./UmkmPanelDeleteModal";
+import UmkmPanel from "./UmkmPanel";
+import CategoriesPanel from "./CategoriesPanel";
 function Dashboard() {
   // const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [companies, setCompanies] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [panel, setPanel] = useState("Umkm");
+  useEffect(() => {}, [panel]);
   return (
     <>
       <ToastContainer
@@ -33,14 +36,29 @@ function Dashboard() {
         pauseOnHover
         theme="colored"
       />
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         <Header />
         <div className="w-full flex">
-          <div className="w-[12%]">
-            <SidePanel />
+          <div className="w-[12%] bg-white drop-shadow-xl h-screen relative">
+            <SidePanel panelState={{ panel, setPanel }} />
           </div>
           <div className="w-[88%]">
-            <UmkmPanel companiesState={{ companies, setCompanies }} />
+            {(() => {
+              if (panel == "Umkm") {
+                return (
+                  <UmkmPanel companiesState={{ companies, setCompanies }} />
+                );
+              } else if (panel == "Categories") {
+                return (
+                  <CategoriesPanel
+                    categoriesState={{ categories, setCategories }}
+                  />
+                );
+              } else {
+                return <div>Not Found</div>;
+              }
+            })()}
+            {/* <UmkmPanel companiesState={{ companies, setCompanies }} /> */}
           </div>
         </div>
       </div>

@@ -29,11 +29,11 @@ function UmkmPanelMain({ companiesState, pageState, editUmkmState }) {
   }, [pageState.page]);
   useEffect(() => {}, [companiesState.companies]);
   return (
-    <div className="flex flex-wrap gap-8 ">
+    <div className="flex flex-wrap gap-8 h-fit">
       <div className="w-full flex justify-between items-center">
         <h1 className="font-bold text-xl">List UMKM</h1>
         <button
-          className="btn capitalize px-8"
+          className="btn capitalize px-8 text-base"
           onClick={() => {
             pageState.setPage("Tambah");
           }}
