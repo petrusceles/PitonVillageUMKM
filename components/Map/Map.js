@@ -3,8 +3,6 @@ import { selectSelectedCompanies } from "../../slices/selectedCompaniesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../slices/categoriesSlice";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import L from "leaflet";
-import { useRouter } from "next/router";
 import { addSelectedCertainCompany } from "../../slices/selectedCertainCompanySlice";
 import Link from "next/link";
 import Company from "../Company";
@@ -51,8 +49,6 @@ function Map() {
   useEffect(() => {}, [companies]);
 
   const dispatch = useDispatch();
-
-  const router = useRouter();
 
   const companyRef = useRef();
 

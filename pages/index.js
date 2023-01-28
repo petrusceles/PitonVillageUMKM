@@ -20,17 +20,17 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const currentCategoriesRequest = await axios.get(
-          "http://localhost:3000/api/categories"
+          "http://localhost:3456/api/percategories"
         );
         const currentCategoriesResponse = currentCategoriesRequest.data;
         if (currentCategoriesResponse.status) {
           dispatch(
             addCategories({
-              categories: currentCategoriesResponse.data.categories,
+              categories: currentCategoriesResponse.data.companies_per_categories,
             })
           );
 
-          setCategories(currentCategoriesResponse.data.categories);
+          setCategories(currentCategoriesResponse.data.companies_per_categories);
         }
       } catch (err) {}
     };
