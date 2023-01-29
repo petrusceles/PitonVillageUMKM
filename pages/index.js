@@ -71,7 +71,7 @@ export default function Home() {
     fetchData();
   }, []);
   return (
-    <div className="bg-[url('/images/front.jpg')] h-screen w-screen bg-cover overflow-hidden">
+    <div className="bg-[url('/images/front.jpg')] h-screen w-screen bg-cover overflow-hidden bg-scroll">
       <div className="container mx-auto max-w-2xl">
         <Navbar />
         <Search />

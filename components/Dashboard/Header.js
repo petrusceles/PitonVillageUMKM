@@ -1,24 +1,37 @@
 import React from "react";
-import { Bars3Icon, ArchiveBoxIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3Icon,
+  ArchiveBoxIcon,
+  ArrowLeftOnRectangleIcon,
+  ArrowUturnLeftIcon,
+} from "@heroicons/react/24/solid";
+import Link from "next/link";
 function Header() {
   return (
     <div className="w-full items-center flex justify-between relative">
       <div
-        className={`w-[12%] bg-emerald-200 h-full flex justify-center items-center duration-300 ease-in-out transition`}
+        className={`w-[12%] bg-slate-300 h-full flex justify-center items-center duration-300 ease-in-out transition`}
       >
-        <h1 className="text-slate-900 grow w-full text-center font-bold ">
+        <h1 className="text-slate-900 py-2 px-3 rounded-full   text-center font-bold bg-slate-50">
           DashboardUMKM
         </h1>
       </div>
       <div
-        className={`w-[88%] flex justify-between items-center bg-emerald-100 py-4 px-8 transition-[width] duration-300 ease-in-ou`}
+        className={`w-[88%] flex justify-between items-center bg-slate-700 py-4 px-8 transition-[width] duration-300 ease-in-out `}
       >
-        <Bars3Icon className="w-7 h-7 fill-slate-900 cursor-pointer" />
-        <div className="flex items-center gap-4 min-w-[150px]">
-          <div className="w-10 h-10 rounded-full bg-slate-300 border-2 border-slate-50"></div>
-          <p className="text-slate-900 tracking-wide text-sm">
-            Admin Admin Admin
-          </p>
+        <p className="text-slate-50 tracking-wide text-lg font-semibold">
+          Halo Admin!
+        </p>
+        <div className="flex items-center gap-4 min-w-[150px] justify-end">
+          {/* <div className="avatar placeholder">
+            <div className="bg-slate-50 text-slate-900 rounded-full w-10">
+              <span className="text-xl">A</span>
+            </div>
+          </div> */}
+          <Link className="btn bg-slate-50 flex gap-2 rounded-full text-slate-900 fill-slate-900  hover:text-slate-50 hover:fill-slate-50 hover:bg-slate-500" href={'/'}>
+            <p className=" capitalize">Kembali</p>
+            <ArrowUturnLeftIcon className="w-5 h-5 cursor-pointer" />
+          </Link>
         </div>
       </div>
     </div>

@@ -11,7 +11,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ["Open Sans", "sans-serif"],
+      sans: ["Quicksand", "sans-serif"],
+      quicksand: ["Quicksand", "sans-serif"],
     },
   },
   plugins: [require("daisyui")],

@@ -39,8 +39,8 @@ function List() {
       <div className="flex-wrap flex justify-end mb-3 py-3 text-lg gap-4 max-h-[65%] overflow-auto no-scrollbar">
         {ListMapping(categoriesListArray)}
       </div>
-      <button className="btn justify-items-end">
-        <Link href="/map" className="capitalize font-normal">
+      <button className="btn justify-items-end bg-slate-50 drop-shadow-md hover:bg-slate-200 ">
+        <Link href="/map" className="text-slate-900">
           Tampilkan
         </Link>
       </button>

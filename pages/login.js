@@ -2,11 +2,14 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import LoadingScreen from "../components/LoadingScreen";
 export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const notificationRef = useRef(null);
 
@@ -22,6 +25,7 @@ export default function Login() {
 
   const loginHandler = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const requestBody = {
         username,
@@ -32,25 +36,33 @@ export default function Login() {
         requestBody
       );
       localStorage.setItem("token", response.data.data.token);
-      router.push('/')
+      setLoading(false);
+      router.push("/");
     } catch (err) {
-      const responseMessage = err.response.data.message;
+      setLoading(false);
       let finalMessage = "";
-      if (Array.isArray(responseMessage)) {
-        responseMessage.forEach((e) => {
-          finalMessage += ` ${e.message}`;
-        });
-      } else {
-        finalMessage = responseMessage;
+      console.log(typeof err?.response?.data);
+      if (err?.response?.data != undefined) {
+        const responseMessage = err.response.data.message;
+        if (Array.isArray(responseMessage)) {
+          responseMessage.forEach((e) => {
+            finalMessage += ` ${e.message}`;
+          });
+        } else {
+          finalMessage = responseMessage;
+        }
       }
+      finalMessage = String(err);
+      console.log(err);
       setNotification(finalMessage);
       notificationRef.current.classList.remove("hidden");
-      router.push('/login')
+      router.push("/login");
     }
   };
 
   return (
     <>
+      {(() => (loading ? <LoadingScreen /> : ""))()}
       <div className="flex h-screen flex-col lg:flex-row">
         <div className="lg:w-1/2 w-full flex items-center justify-center px-40 py-16 lg:p-72 lg:bg-green-300">
           <h1 className="lg:text-8xl xl:text-9xl lg:font-medium text-7xl font-medium mx-auto text-center lg:text-left text-slate-800">

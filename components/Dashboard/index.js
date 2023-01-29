@@ -36,7 +36,7 @@ function Dashboard() {
         pauseOnHover
         theme="colored"
       />
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap dashboard">
         <Header />
         <div className="w-full flex">
           <div className="w-[12%] bg-white drop-shadow-xl h-screen relative">

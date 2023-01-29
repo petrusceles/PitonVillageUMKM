@@ -13,10 +13,10 @@ function Navbar() {
     setToken();
   };
   return (
-    <div className="grid grid-cols-2 px-5 py-5  items-center">
+    <div className="grid grid-cols-2 px-5 py-5 items-center">
       <div className="navbar flex justify-center flex-wrap">
         <div className="w-full flex justify-start">
-          <p className="font-bold text-2xl text-slate-700">UMKM</p>
+          <p className="font-bold  font-quicksand text-2xl text-slate-700">UMKM</p>
         </div>
         <div className="w-full flex justify-start">
           <p className="text-2xl text-slate-700">DESA PITON</p>
