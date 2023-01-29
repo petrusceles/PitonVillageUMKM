@@ -12,10 +12,10 @@ function UmkmPanelMain({ companiesState, pageState, editUmkmState }) {
         );
 
         const currentCompaniesResponse = currentCompaniesRequest.data;
-        console.log(currentCompaniesResponse);
+        // console.log(currentCompaniesResponse);
         if (currentCompaniesResponse.status) {
           const companiesResponseData = currentCompaniesResponse.data.companies;
-          console.log(companiesResponseData);
+          // console.log(companiesResponseData);
           companiesState.setCompanies(companiesResponseData);
         } else {
           toast.error("no data retrieved");

@@ -9,7 +9,7 @@ export const selectedCertainCompanySlice = createSlice({
   initialState,
   reducers: {
     addSelectedCertainCompany: (state, action) => {
-      console.log(state);
+      // console.log(state);
       state.selectedCertainCompany = action.payload.selectedCertainCompany;
     },
     removeSelectedCertainCompany: (state, action) => {

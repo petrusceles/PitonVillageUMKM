@@ -52,14 +52,20 @@ function UmkmPanelAdd({ pageState }) {
       setLoading(true);
       // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       // await sleep(1000);
+      const token = localStorage.getItem("token");
       const addUmkmResponse = await axios.post(
         "http://localhost:3456/api/companies",
-        payload
+        payload,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       setLoading(false);
-      console.log(addUmkmResponse);
+      // console.log(addUmkmResponse);
       if (addUmkmResponse.status === 201) {
-        console.log("berhasil daftar");
+        // console.log("berhasil daftar");
 
         pageState.setPage("List");
       }
@@ -114,7 +120,7 @@ function UmkmPanelAdd({ pageState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setUmkmLogo(value);
@@ -127,7 +133,7 @@ function UmkmPanelAdd({ pageState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setUmkmPicture(value);

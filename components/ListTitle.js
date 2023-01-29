@@ -3,7 +3,7 @@ import bananaImage from "../public/icons/banana.png";
 import Image from "next/image";
 function ListTitle({ isShowedStateManager, name, pictureUrl }) {
   const onClickMenu = () => {
-    console.log(name, pictureUrl);
+    // console.log(name, pictureUrl);
     isShowedStateManager.setIsShowed((prevIsShowed) => {
       return !prevIsShowed;
     });

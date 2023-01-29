@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingScreen from "../LoadingScreen";
+import { useRouter } from "next/router";
 // category_id: DataTypes.BIGINT,
 // name: DataTypes.STRING,
 // owner: DataTypes.STRING,
@@ -17,6 +18,7 @@ import LoadingScreen from "../LoadingScreen";
 // content: DataTypes.TEXT,
 
 function UmkmPanelEdit({ pageState, editUmkmState }) {
+  const router = useRouter();
   const [categoriesList, setCategoriesList] = useState([]);
   const [umkmName, setUmkmName] = useState(undefined);
   const [umkmOwner, setUmkmOwner] = useState(undefined);
@@ -68,25 +70,31 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
       // for (const value of payload.values()) {
       //   console.log(value);
       // }
+      const token = localStorage.getItem("token");
       const editUmkmResponse = await axios.put(
         `http://localhost:3456/api/companies/${editUmkmState.editUmkm}`,
-        payload
+        payload,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       setLoading(false);
-      console.log(editUmkmResponse);
+      // console.log(editUmkmResponse);
       if (editUmkmResponse.status === 200) {
-        console.log("berhasil daftar");
+        // console.log("berhasil daftar");
 
         pageState.setPage("List");
       }
     } catch (err) {
       setLoading(false);
-      const errorMessage = err.response.data.message;
-      if (errorMessage) {
-        toast.error(String(errorMessage));
-      } else {
-        toast.error(String(err));
+      // console.log(err.response.status);
+      if (err.response.status == 401) {
+        toast.error("you need to login first");
+        router.push('login')
       }
+      toast.error(String(err));
     }
   };
 
@@ -154,7 +162,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
           umkmCategoryIdRef.current.value =
             companyResponse.data.company.category_id;
           setUmkmCategoryId(companyResponse.data.company.category_id);
-          console.log(companyResponse);
+          // console.log(companyResponse);
         }
       } catch (err) {
         toast.error(String(err));
@@ -183,7 +191,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setUmkmLogo(value);
@@ -196,7 +204,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setUmkmPicture(value);
@@ -235,6 +243,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
   };
 
   const requiredMark = <span className="text-red-400">*</span>;
+
   return (
     <>
       {(() => (loading ? <LoadingScreen /> : ""))()}

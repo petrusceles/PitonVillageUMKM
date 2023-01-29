@@ -12,6 +12,8 @@ import Search from "../components/Search";
 import { addCategories } from "../slices/categoriesSlice";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import { addUser } from "../slices/userSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,15 +28,46 @@ export default function Home() {
         if (currentCategoriesResponse.status) {
           dispatch(
             addCategories({
-              categories: currentCategoriesResponse.data.companies_per_categories,
+              categories:
+                currentCategoriesResponse.data.companies_per_categories,
             })
           );
 
-          setCategories(currentCategoriesResponse.data.companies_per_categories);
+          setCategories(
+            currentCategoriesResponse.data.companies_per_categories
+          );
         }
       } catch (err) {}
     };
 
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const currentUserRequest = await axios.get(
+          `http://localhost:3456/api/auth/me`,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const currentUserResponse = currentUserRequest.data;
+        if (currentUserResponse.status) {
+          dispatch(
+            addUser({
+              user: currentUserResponse.data.user,
+              token,
+            })
+          );
+        }
+        // console.log(currentUserResponse);
+      } catch (err) {
+        toast.error(String(err));
+      }
+    };
+    fetchUserData();
     fetchData();
   }, []);
   return (

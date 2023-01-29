@@ -13,8 +13,14 @@ function UmkmPanelDeleteModal({ id, showConfirmationModalState, pageState }) {
 
     try {
       setLoading(true);
+      const token = localStorage.getItem("token");
       const deleteUmkmResponse = await axios.delete(
-        `http://localhost:3456/api/companies/${id}`
+        `http://localhost:3456/api/companies/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       if (deleteUmkmResponse.status === 200) {
         toast.success("Successfully delete Umkm data");

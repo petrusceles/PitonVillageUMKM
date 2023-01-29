@@ -17,8 +17,15 @@ function CategoriesPanelDeleteModal({
 
     try {
       setLoading(true);
+
+      const token = localStorage.getItem("token");
       const deleteCategoryRequest = await axios.delete(
-        `http://localhost:3456/api/categories/${id}`
+        `http://localhost:3456/api/categories/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       const deleteCategoryResponse = deleteCategoryRequest.data;
 

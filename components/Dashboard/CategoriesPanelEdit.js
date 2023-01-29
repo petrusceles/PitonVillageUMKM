@@ -26,7 +26,7 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
 
         if (categoryResponse.status) {
           const categoryData = categoryResponse.data.category;
-          console.log(categoryData);
+          // console.log(categoryData);
 
           categoriesNameRef.current.value = categoryData.name;
           setCategoriesName(categoryData.name);
@@ -50,9 +50,15 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
       setLoading(true);
       // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       // await sleep(1000);
+      const token = localStorage.getItem("token");
       const editCategoriesRequest = await axios.put(
         `http://localhost:3456/api/categories/${editCategoriesState.editCategories}`,
-        payload
+        payload,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       setLoading(false);
       // console.log(editCategoriesRequest);
@@ -83,7 +89,7 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setCategoriesPicture(value);
@@ -96,7 +102,7 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setCategoriesIcon(value);

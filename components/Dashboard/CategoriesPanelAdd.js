@@ -23,12 +23,18 @@ function CategoriesPanelAdd({ pageState }) {
       setLoading(true);
       // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       // await sleep(1000);
+      const token = localStorage.getItem("token");
       const addCategoriesRequest = await axios.post(
         "http://localhost:3456/api/categories",
-        payload
+        payload,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       setLoading(false);
-      console.log(addCategoriesRequest);
+      // console.log(addCategoriesRequest);
       const addCategoriesResponse = addCategoriesRequest.data;
       if (addCategoriesResponse.status) {
         // console.log("berhasil daftar");
@@ -37,7 +43,7 @@ function CategoriesPanelAdd({ pageState }) {
       }
     } catch (err) {
       setLoading(false);
-      console.log(err);
+      // console.log(err);
       toast.error(String(err));
     }
   };
@@ -56,7 +62,7 @@ function CategoriesPanelAdd({ pageState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setCategoriesPicture(value);
@@ -69,7 +75,7 @@ function CategoriesPanelAdd({ pageState }) {
       value.type !== "image/jpg" ||
       value.type !== "image/jpeg"
     ) {
-      console.log("Should be an image");
+      toast.error("Should be an image");
     }
 
     setCategoriesIcon(value);

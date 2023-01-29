@@ -12,7 +12,7 @@ function List() {
     const categories = categoriesListArray.map((e, i) => {
       return <ListSection category={e} key={i} />;
     });
-    console.log(categoriesListArray);
+    // console.log(categoriesListArray);
     return categories;
   };
 
