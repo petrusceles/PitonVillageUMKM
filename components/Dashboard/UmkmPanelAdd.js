@@ -54,7 +54,7 @@ function UmkmPanelAdd({ pageState }) {
       // await sleep(1000);
       const token = localStorage.getItem("token");
       const addUmkmResponse = await axios.post(
-        "http://localhost:3456/api/companies",
+        `${process.env.API_URL}/api/companies`,
         payload,
         {
           headers: {
@@ -84,7 +84,7 @@ function UmkmPanelAdd({ pageState }) {
     const fetchCategories = async () => {
       try {
         const categoriesListRequest = await axios.get(
-          "http://localhost:3456/api/categories"
+          `${process.env.API_URL}/api/categories`
         );
         const categoriesListResponse = categoriesListRequest.data;
         if (categoriesListResponse.status) {

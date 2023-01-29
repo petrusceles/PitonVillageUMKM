@@ -13,7 +13,7 @@ function CategoriesPanelMain({
     const fetchCategoriesData = async () => {
       try {
         const categoriesRequest = await axios.get(
-          "http://localhost:3456/api/categories"
+          `${process.env.API_URL}/api/categories`
         );
         const categoriesResponse = categoriesRequest.data;
         if (categoriesResponse.status) {

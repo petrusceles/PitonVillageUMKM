@@ -22,7 +22,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const currentCategoriesRequest = await axios.get(
-          "http://localhost:3456/api/percategories"
+          `${process.env.API_URL}/api/percategories`
         );
         const currentCategoriesResponse = currentCategoriesRequest.data;
         if (currentCategoriesResponse.status) {
@@ -45,7 +45,7 @@ export default function Home() {
         const token = localStorage.getItem("token");
 
         const currentUserRequest = await axios.get(
-          `http://localhost:3456/api/auth/me`,
+          `${process.env.API_URL}/api/auth/me`,
           {
             headers: {
               authorization: `Bearer ${token}`,

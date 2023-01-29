@@ -72,7 +72,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
       // }
       const token = localStorage.getItem("token");
       const editUmkmResponse = await axios.put(
-        `http://localhost:3456/api/companies/${editUmkmState.editUmkm}`,
+        `${process.env.API_URL}/api/companies/${editUmkmState.editUmkm}`,
         payload,
         {
           headers: {
@@ -104,7 +104,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
     const fetchCategories = async () => {
       try {
         const categoriesListRequest = await axios.get(
-          "http://localhost:3456/api/categories"
+          `${process.env.API_URL}/api/categories`
         );
         const categoriesListResponse = categoriesListRequest.data;
         if (categoriesListResponse.status) {
@@ -124,7 +124,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
     const fetchUmkmData = async () => {
       try {
         const companyRequest = await axios.get(
-          `http://localhost:3456/api/companies/${editUmkmState.editUmkm}`
+          `${process.env.API_URL}/api/companies/${editUmkmState.editUmkm}`
         );
         const companyResponse = companyRequest.data;
         if (companyResponse.status) {

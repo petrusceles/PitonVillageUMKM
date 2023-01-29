@@ -20,7 +20,7 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
     const fetchCategoriesData = async () => {
       try {
         const categoryRequest = await axios.get(
-          `http://localhost:3456/api/categories/${editCategoriesState.editCategories}`
+          `${process.env.API_URL}/api/categories/${editCategoriesState.editCategories}`
         );
         const categoryResponse = categoryRequest.data;
 
@@ -52,7 +52,7 @@ function CategoriesPanelEdit({ pageState, editCategoriesState }) {
       // await sleep(1000);
       const token = localStorage.getItem("token");
       const editCategoriesRequest = await axios.put(
-        `http://localhost:3456/api/categories/${editCategoriesState.editCategories}`,
+        `${process.env.API_URL}/api/categories/${editCategoriesState.editCategories}`,
         payload,
         {
           headers: {

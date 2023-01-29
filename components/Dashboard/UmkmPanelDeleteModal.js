@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import LoadingScreen from "../LoadingScreen";
+
 function UmkmPanelDeleteModal({ id, showConfirmationModalState, pageState }) {
   const onClickBackHandler = (e) => {
     e.preventDefault;
@@ -15,7 +16,7 @@ function UmkmPanelDeleteModal({ id, showConfirmationModalState, pageState }) {
       setLoading(true);
       const token = localStorage.getItem("token");
       const deleteUmkmResponse = await axios.delete(
-        `http://localhost:3456/api/companies/${id}`,
+        `${process.env.API_URL}/api/companies/${id}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

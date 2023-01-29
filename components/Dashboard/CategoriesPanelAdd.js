@@ -3,7 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingScreen from "../LoadingScreen";
-
+pr
 function CategoriesPanelAdd({ pageState }) {
   //   const [categoriesList, setCategoriesList] = useState([]);
   const [categoriesName, setCategoriesName] = useState("");
@@ -25,7 +25,7 @@ function CategoriesPanelAdd({ pageState }) {
       // await sleep(1000);
       const token = localStorage.getItem("token");
       const addCategoriesRequest = await axios.post(
-        "http://localhost:3456/api/categories",
+        `${process.env.API_URL}/api/categories`,
         payload,
         {
           headers: {

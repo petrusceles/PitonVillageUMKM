@@ -20,6 +20,7 @@ export default function Login() {
 
   const passwordHandler = (event) => {
     const passwordInput = event.target.value;
+    console.log(process.env.API_URL);
     setPassword(passwordInput);
   };
 
@@ -32,7 +33,7 @@ export default function Login() {
         password,
       };
       const response = await axios.post(
-        "http://localhost:3456/api/auth/login",
+        `${process.env.API_URL}/api/auth/login`,
         requestBody
       );
       localStorage.setItem("token", response.data.data.token);

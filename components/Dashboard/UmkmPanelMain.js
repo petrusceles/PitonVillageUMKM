@@ -8,7 +8,7 @@ function UmkmPanelMain({ companiesState, pageState, editUmkmState }) {
     const fetchData = async () => {
       try {
         const currentCompaniesRequest = await axios.get(
-          "http://localhost:3456/api/companies"
+          `${process.env.API_URL}/api/companies`
         );
 
         const currentCompaniesResponse = currentCompaniesRequest.data;
