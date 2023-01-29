@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CategoriesPanelAdd from "./CategoriesPanelAdd";
 import CategoriesPanelEdit from "./CategoriesPanelEdit";
 import CategoriesPanelMain from "./CategoriesPanelMain";
-const pageList = ["List", "Tambah", "Edit"];
 function CategoriesPanel({ categoriesState }) {
   const [page, setPage] = useState("List");
   const [editCategories, setEditCategories] = useState();

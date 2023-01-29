@@ -3,7 +3,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingScreen from "../LoadingScreen";
-pr
 function CategoriesPanelAdd({ pageState }) {
   //   const [categoriesList, setCategoriesList] = useState([]);
   const [categoriesName, setCategoriesName] = useState("");
