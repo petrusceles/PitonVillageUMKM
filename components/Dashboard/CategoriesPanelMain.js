@@ -36,7 +36,7 @@ function CategoriesPanelMain({
       <div className="w-full flex justify-between items-center">
         <h1 className="font-bold text-xl">List Kategori</h1>
         <button
-          className="btn capitalize px-8 text-base rounded-full bg-slate-700 hover:bg-slate-50"
+          className="btn capitalize px-8 text-base bg-slate-700 rounded-full hover:bg-slate-800"
           onClick={() => {
             pageState.setPage("Tambah");
           }}
