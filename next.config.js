@@ -8,7 +8,7 @@ const nextConfig = {
     domains: ["res.cloudinary.com"],
   },
   env: {
-    API_URL: "http://localhost:3456",
+    API_URL: "https://good-lime-anemone-wig.cyclic.app",
   },
 };
 
