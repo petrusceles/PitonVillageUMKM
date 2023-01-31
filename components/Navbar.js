@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { ArrowDownTrayIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 function Navbar() {
   const [token, setToken] = useState();
   useEffect(() => {
@@ -45,6 +45,15 @@ function Navbar() {
                     <Link href="/dashboard">Dashboard</Link>
                   </li>
                   <li>
+                    <Link
+                      href="/"
+                      className="flex w-full justify-between"
+                    >
+                      <p>Perdes UMKM</p>
+                      <ArrowDownTrayIcon className="h-5 w-5 text-slate-800" />
+                    </Link>
+                  </li>
+                  <li>
                     <button
                       className="text-red-800"
                       onClick={(e) => {
@@ -64,9 +73,32 @@ function Navbar() {
             );
           } else {
             return (
-              <button className="btn">
-                <Link href="/login">Login</Link>
-              </button>
+              <div class="dropdown dropdown-end ">
+                <label
+                  tabindex="0"
+                  class="btn rounded-btn btn-ghost gap-2 flex"
+                >
+                  <p>Menu</p>
+                  <ChevronDownIcon className="h-6 w-6 text-slate-800" />
+                </label>
+                <ul
+                  tabindex="0"
+                  class="menu dropdown-content p-2 shadow bg-slate-50 rounded-box w-52 mt-4"
+                >
+                  <li>
+                    <Link href="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/"
+                      className="flex w-full justify-between"
+                    >
+                      <p>Perdes UMKM</p>
+                      <ArrowDownTrayIcon className="h-5 w-5 text-slate-800" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             );
           }
         })()}
