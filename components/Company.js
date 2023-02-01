@@ -43,7 +43,16 @@ function Company() {
     }
     for (let prop in selectedCertainCompanySelector.selectedCertainCompany) {
       console.log(
+        selectedCertainCompanySelector.selectedCertainCompany[prop] != 'null'
+      );
+      console.log(
+        selectedCertainCompanySelector.selectedCertainCompany[prop]
+      );
+      console.log(
         selectedCertainCompanySelector.selectedCertainCompany[prop] != null
+      );
+      console.log(
+        !selectedCertainCompanySelector.selectedCertainCompany[prop]
       );
       if (
         acceptedSocialMedia.includes(prop) &&
