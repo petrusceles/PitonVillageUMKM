@@ -23,7 +23,7 @@ function ListSection({ category }) {
       />
       <div
         className={`overflow-hidden w-full  flex duration-300 ease-in-out ${
-          isShowed ? "max-h-96" : "max-h-0"
+          isShowed ? "max-h-fit" : "max-h-0"
         }`}
       >
         <div
