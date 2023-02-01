@@ -45,13 +45,14 @@ function Navbar() {
                     <Link href="/dashboard">Dashboard</Link>
                   </li>
                   <li>
-                    <Link
-                      href="/"
+                    <a
+                      href="https://drive.google.com/file/d/1fRukZAu-HX_P_xNNEouwDoyfh93haKG3/view?usp=sharing"
+                      target={"_blank"}
                       className="flex w-full justify-between"
                     >
                       <p>Perdes UMKM</p>
                       <ArrowDownTrayIcon className="h-5 w-5 text-slate-800" />
-                    </Link>
+                    </a>
                   </li>
                   <li>
                     <button
@@ -89,10 +90,7 @@ function Navbar() {
                     <Link href="/login">Login</Link>
                   </li>
                   <li>
-                    <Link
-                      href="/"
-                      className="flex w-full justify-between"
-                    >
+                    <Link href="/" className="flex w-full justify-between">
                       <p>Perdes UMKM</p>
                       <ArrowDownTrayIcon className="h-5 w-5 text-slate-800" />
                     </Link>
