@@ -15,6 +15,8 @@ function ListMenu({ name, companyId }) {
     const selectedCompanies = selectedCompaniesList.selectedCompanies;
     if (selectedCompanies.includes(companyId)) {
       checkCheckbox.current.checked = true;
+    } else {
+      checkCheckbox.current.checked = false;
     }
   }, [selectedCompaniesList]);
 

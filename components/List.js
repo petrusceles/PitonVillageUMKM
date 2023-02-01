@@ -1,11 +1,28 @@
 import { useEffect, useState } from "react";
 import { selectCategories } from "../slices/categoriesSlice";
-import { useSelector } from "react-redux";
+// import selectedCompaniesSlice from "../slices/selectedCompaniesSlice";
+// import { selectSelectedCompanies } from "../slices/selectedCompaniesSlice";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import ListSection from "./ListSection";
+import {
+  selectSelectedCompanies,
+  removeSelectedCompanies,
+} from "../slices/selectedCompaniesSlice";
+
 function List() {
   let categoriesList = useSelector(selectCategories);
   const [categoriesListArray, setCategoriesListArray] = useState([]);
+
+  const dispatch = useDispatch();
+  let selectedCompaniesList = useSelector(selectSelectedCompanies);
+
+  const onClickResetButtonHandler = (e) => {
+    // console.log(selectedCompaniesList);
+    e.preventDefault;
+    // console.log("Masuk");
+    dispatch(removeSelectedCompanies());
+  };
   // let ListMapping;
 
   const ListMapping = (categoriesListArray) => {
@@ -33,17 +50,27 @@ function List() {
     //   ListMapping.push(<p className="font-bold text-xl">Halo</p>);
     // }
     // console.log(ListMapping);
-  }, [categoriesList]);
+  }, [categoriesList,selectedCompaniesList]);
   return (
     <div className="px-5 py-3 h-screen overflow-hidden">
       <div className="flex-wrap flex justify-end mb-3 py-3 text-lg gap-4 max-h-[65%] overflow-auto no-scrollbar">
         {ListMapping(categoriesListArray)}
       </div>
-      <button className="btn justify-items-end bg-slate-50 drop-shadow-md hover:bg-slate-200 ">
-        <Link href="/map" className="text-slate-900">
-          Tampilkan
-        </Link>
-      </button>
+      <div className="w-full flex flex-wrap gap-3">
+        <button className="btn justify-items-end btn-ghost bg-slate-100 shadow-md">
+          <Link href="/map" className="text-slate-900">
+            Tampilkan
+          </Link>
+        </button>
+        <button
+          className="btn btn-error btn-ghost bg-slate-100 shadow-md text-red-900"
+          onClick={(e) => {
+            onClickResetButtonHandler(e);
+          }}
+        >
+          Reset
+        </button>
+      </div>
       {/* <p>Halo</p> */}
     </div>
   );

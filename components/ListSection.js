@@ -5,7 +5,7 @@ import ListTitle from "./ListTitle";
 function ListSection({ category }) {
   const [isShowed, setIsShowed] = useState(false);
   const companies = category.companies;
-  console.log(companies);
+  // console.log(companies);
   let ListMenuMapping = [];
   for (const e of companies) {
     // console.log(e.name);

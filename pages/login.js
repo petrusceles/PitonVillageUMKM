@@ -20,7 +20,7 @@ export default function Login() {
 
   const passwordHandler = (event) => {
     const passwordInput = event.target.value;
-    console.log(process.env.API_URL);
+    // console.log(process.env.API_URL);
     setPassword(passwordInput);
   };
 
@@ -42,7 +42,7 @@ export default function Login() {
     } catch (err) {
       setLoading(false);
       let finalMessage = "";
-      console.log(typeof err?.response?.data);
+      // console.log(typeof err?.response?.data);
       if (err?.response?.data != undefined) {
         const responseMessage = err.response.data.message;
         if (Array.isArray(responseMessage)) {
@@ -54,7 +54,7 @@ export default function Login() {
         }
       }
       finalMessage = String(err);
-      console.log(err);
+      // console.log(err);
       setNotification(finalMessage);
       notificationRef.current.classList.remove("hidden");
       router.push("/login");
