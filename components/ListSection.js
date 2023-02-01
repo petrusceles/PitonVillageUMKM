@@ -22,8 +22,8 @@ function ListSection({ category }) {
         pictureUrl={category.picture_url}
       />
       <div
-        className={`overflow-hidden w-full  flex duration-300 ease-in-out ${
-          isShowed ? "max-h-fit" : "max-h-0"
+        className={`overflow-hidden w-full  flex duration-1000 ease-in-out ${
+          isShowed ? "max-h-[10000px]" : "max-h-0"
         }`}
       >
         <div
