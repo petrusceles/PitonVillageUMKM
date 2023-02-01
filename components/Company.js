@@ -44,7 +44,9 @@ function Company() {
     for (let prop in selectedCertainCompanySelector.selectedCertainCompany) {
       if (
         acceptedSocialMedia.includes(prop) &&
-        selectedCertainCompanySelector.selectedCertainCompany[prop]
+        selectedCertainCompanySelector.selectedCertainCompany[prop] &&
+        selectedCertainCompanySelector.selectedCertainCompany[prop] != null &&
+        selectedCertainCompanySelector.selectedCertainCompany[prop] != undefined
       ) {
         socialMediaTemp[prop] =
           selectedCertainCompanySelector.selectedCertainCompany[prop];
