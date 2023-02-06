@@ -27,10 +27,9 @@ function UmkmPanelMain({ companiesState, pageState, editUmkmState }) {
         toast.error(err);
       }
     };
-
     fetchData();
   }, [pageState.page]);
-  useEffect(() => {}, [companiesState.companies]);
+  // useEffect(() => {}, [companiesState.companies]);
   return (
     <>
       {(() => (loading ? <LoadingScreen /> : ""))()}

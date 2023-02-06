@@ -123,9 +123,11 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
 
     const fetchUmkmData = async () => {
       try {
+        setLoading(true);
         const companyRequest = await axios.get(
           `${process.env.API_URL}/api/companies/${editUmkmState.editUmkm}`
         );
+        setLoading(false);
         const companyResponse = companyRequest.data;
         if (companyResponse.status) {
           umkmNameRef.current.value = companyResponse.data.company.name;
@@ -249,7 +251,7 @@ function UmkmPanelEdit({ pageState, editUmkmState }) {
       {(() => (loading ? <LoadingScreen /> : ""))()}
 
       <div className="w-full flex flex-wrap">
-        <h1 className="font-bold text-xl">Tambah Umkm</h1>
+        <h1 className="font-bold text-xl">Edit Umkm</h1>
         <div className="w-full py-6">
           <div className="bg-white w-full drop-shadow-lg">
             <form className="grid grid-cols-1 px-6 py-10 gap-6 w-[60%] min-w-[800px]">
