@@ -14,16 +14,19 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { addUser } from "../slices/userSlice";
-
+import LoadingScreen from "../components/LoadingScreen";
 export default function Home() {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const currentCategoriesRequest = await axios.get(
           `${process.env.API_URL}/api/percategories`
         );
+        setLoading(false);
         const currentCategoriesResponse = currentCategoriesRequest.data;
         if (currentCategoriesResponse.status) {
           dispatch(
@@ -61,21 +64,28 @@ export default function Home() {
               token,
             })
           );
+        } else {
+          localStorage.removeItem("token");
         }
+
         // console.log(currentUserResponse);
       } catch (err) {
         toast.error(String(err));
+        localStorage.removeItem("token");
       }
     };
     fetchUserData();
     fetchData();
   }, []);
   return (
-    <div className="bg-slate-100 h-screen w-screen bg-cover overflow-hidden bg-scroll">
-      <div className="container mx-auto max-w-2xl">
-        <Navbar />
-        <List />
+    <>
+      {(() => (loading ? <LoadingScreen /> : ""))()}
+      <div className="bg-slate-100 h-screen w-screen bg-cover overflow-hidden bg-scroll">
+        <div className="container mx-auto max-w-2xl">
+          <Navbar />
+          <List />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

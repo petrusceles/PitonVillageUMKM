@@ -13,7 +13,6 @@ function dashboard() {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-
         const currentUserRequest = await axios.get(
           `${process.env.API_URL}/api/auth/me`,
           {
@@ -31,12 +30,15 @@ function dashboard() {
               token,
             })
           );
+        } else {
+          localStorage.removeItem("token");
         }
         // console.log(currentUserResponse);
 
         // router.push("/dashboard");
       } catch (err) {
         toast.error(String(err));
+        localStorage.removeItem("token");
         router.push("/");
       }
     };
